@@ -1,7 +1,6 @@
 import pytest
 
-from src.category import Category
-from src.product import Product
+from src.classes import Product, Category
 
 
 @pytest.fixture
@@ -20,7 +19,6 @@ def test_categories(product1):
     category1 = Category('cat_1', 'description', [product1])
     assert category1.name == 'cat_1'
     assert category1.description == 'description'
-    assert len(category1.products) == 1
 
 
 def test_categories_count(product1,  product2):

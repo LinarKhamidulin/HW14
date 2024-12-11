@@ -3,6 +3,7 @@ from typing import Sequence
 
 class Product:
 
+
     def __init__(self,name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
@@ -59,6 +60,7 @@ class Category:
     category_count = 0
     product_count = 0
     __products = []
+
 
     def __init__(self, name: str, description: str, products: Sequence[Product]):
         self.name = name

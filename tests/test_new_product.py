@@ -10,7 +10,6 @@ def category():
 
 
 def test_new_product(category):
-
     category.add_product(Product('prod_1', "1", 2, 10))
     category.add_product(Product('prod_2', "1", 3, 1))
 
@@ -38,7 +37,6 @@ def test_new_product(category):
 
 
 def test_new_product_zero(category):
-
     category.add_product(Product('prod_2', "1", 3, 1))
 
     new_product_2 = Product.new_product(
@@ -49,7 +47,6 @@ def test_new_product_zero(category):
 
 
 def test_new_product_minus(category):
-
     category.add_product(Product('prod_2', "1", 3, 1))
 
     new_product_2 = Product.new_product(

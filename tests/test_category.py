@@ -22,7 +22,6 @@ def test_categories(product1):
 
 
 def test_categories_count(product1,  product2):
-
     Category.category_count = 0
     Category.product_count = 0
 

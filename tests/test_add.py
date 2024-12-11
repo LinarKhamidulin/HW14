@@ -16,4 +16,5 @@ def product_2():
 
 
 def test_add_product(product_1, product_2):
+
     assert product_1 + product_2 == (5, 11)

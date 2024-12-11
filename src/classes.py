@@ -28,6 +28,14 @@ class Product:
             print('Цена 2')
             self.__price = price
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        sum_price = self.price + other.price
+        sum_quantity = self.quantity + other.quantity
+        return sum_price, sum_quantity
+
 
     @classmethod
     def new_product(cls, dict_product: dict):
@@ -59,6 +67,10 @@ class Category:
         Category.__products = products
         Category.category_count += 1
         Category.product_count += len(products)
+
+
+    def __str__(self):
+        return f"Категория {self.name}, количество продуктов: {Category.product_count} шт."
 
 
     def add_product(self, new_product: Product):

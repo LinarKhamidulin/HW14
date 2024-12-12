@@ -3,7 +3,6 @@ from typing import Sequence
 
 class Product:
 
-
     def __init__(self,name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
@@ -33,9 +32,12 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        sum_price = self.price + other.price
-        sum_quantity = self.quantity + other.quantity
-        return sum_price, sum_quantity
+
+        sum_product_1 = self.price * self.quantity
+        sum_product_2 = other.price * other.quantity
+        sum_product = sum_product_1 + sum_product_2
+        return sum_product
+
 
 
     @classmethod
@@ -72,7 +74,10 @@ class Category:
 
 
     def __str__(self):
-        return f"Категория {self.name}, количество продуктов: {Category.product_count} шт."
+        product_count = 0
+        for i in self.__products:
+            product_count += i.quantity
+        return f"Категория {self.name}, количество продуктов: {product_count} шт."
 
 
     def add_product(self, new_product: Product):
@@ -95,3 +100,4 @@ class Category:
         for product in self.__products:
             list_products.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return "\n".join(list_products)
+

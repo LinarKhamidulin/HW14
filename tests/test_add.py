@@ -1,6 +1,6 @@
 import pytest
 
-from src.classes import Product
+from src.classes import Product, Category
 
 
 @pytest.fixture
@@ -17,4 +17,4 @@ def product_2():
 
 def test_add_product(product_1, product_2):
 
-    assert product_1 + product_2 == (5, 11)
+    assert product_1 + product_2 == 23

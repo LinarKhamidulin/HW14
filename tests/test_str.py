@@ -30,6 +30,6 @@ def test_str_category(category_1):
 
 
 def test_str_category_2(category_2):
-    assert str(category_2) == "Категория cat, количество продуктов: 1 шт."
+    assert str(category_2) == "Категория cat, количество продуктов: 10 шт."
 
 

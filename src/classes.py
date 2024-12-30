@@ -1,13 +1,25 @@
+from abc import ABC, abstractmethod
 from typing import Sequence
 
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+
 #class Product
-class Product:
+class Product(BaseProduct):
 
     def __init__(self,name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}"
 
 
     @property
@@ -116,6 +128,9 @@ class Smartphone(Product):
         self.memory = memory
         self.color =color
 
+    def __repr__(self):
+        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}, {self.efficiency}, {self.model}, {self.memory}, {self.color}"
+
 
 # class наследник LawnGrass
 class LawnGrass(Product):
@@ -125,3 +140,6 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def __repr__(self):
+        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}, {self.country}, {self.germination_period}, {self.color}"

@@ -8,18 +8,28 @@ class BaseProduct(ABC):
         pass
 
 
+class Mixin:
+
+    def __init__(self, *args, **kwargs):
+        print(repr(self))
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}: {self.name}, {self.description}, {self.price}, {self.quantity}"
+
+
 #class Product
-class Product(BaseProduct):
+class Product(Mixin, BaseProduct):
 
     def __init__(self,name: str, description: str, price: float, quantity: int):
+
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
-
-
-    def __repr__(self):
-        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}"
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            raise ValueError
+        super().__init__()
 
 
     @property
@@ -104,6 +114,22 @@ class Category:
             raise TypeError
 
 
+    def middle_price(self):
+        middle_price = 0
+        all_price_product = 0
+        try:
+
+            if Category.product_count != 0:
+                for i in self.__products:
+                    all_price_product += i.price
+                middle_price = all_price_product/Category.product_count
+            return round(middle_price, 2)
+
+        except ZeroDivisionError:
+            print(middle_price)
+
+
+
     @staticmethod
     def get_product():
         return Category.__products
@@ -118,6 +144,7 @@ class Category:
         return "\n".join(list_products)
 
 
+
 # class наследник Smartphone
 class Smartphone(Product):
 
@@ -128,10 +155,6 @@ class Smartphone(Product):
         self.memory = memory
         self.color =color
 
-    def __repr__(self):
-        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}, {self.efficiency}, {self.model}, {self.memory}, {self.color}"
-
-
 # class наследник LawnGrass
 class LawnGrass(Product):
 
@@ -141,5 +164,3 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
-    def __repr__(self):
-        return f"{self.__class__.__name__},{self.name}, {self.description}, {self.__price}, {self.quantity}, {self.country}, {self.germination_period}, {self.color}"
